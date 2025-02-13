@@ -11,6 +11,11 @@ This repository is going to be used to learn the basic skills for github.
 ### Images
 ![Photo of the pokemon squirtle that has sunglasses and has his hands of his side](coolSquirtle.png)
 
+### Code Examples
+```python
+result = num1 + num2
+```
+
 ## References
 [Github documentation](https://docs.github.com/en) 
 
