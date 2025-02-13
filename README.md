@@ -16,6 +16,11 @@ This repository is going to be used to learn the basic skills for github.
 result = num1 + num2
 ```
 
+### Lists
+- [ ] Turn on GitHub Pages
+- [ ] Outline my portfolio
+- [ ] Introduce myself to the world
+
 ## References
 [Github documentation](https://docs.github.com/en) 
 
