@@ -9,7 +9,7 @@ This repository is going to be used to learn the basic skills for github.
 ## Contents
 
 ### Images
-![Photo of the pokemon squirtle that has sunglasses and has his hands of his side](https://wallpapers.com/images/high/squirtle-sunglasses-cool-pose-gjgzdgdtizy2xynk.png)
+![Photo of the pokemon squirtle that has sunglasses and has his hands of his side](coolSquirtle.png)
 
 ## References
 [Github documentation](https://docs.github.com/en) 
