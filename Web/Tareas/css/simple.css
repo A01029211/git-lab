@@ -1,0 +1,39 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+header nav {
+    display: flex;
+    gap: 10px;
+    margin: 18.72px;
+}
+
+body {
+    text-align: center;
+}
+
+#SubscibeSection {
+    display: flex;
+    justify-content: center;
+}
+
+#SubscibeSection form{
+    margin: 18px;
+}
+
+#imgSection {
+    display: flex;
+}
+
+#titulo {
+    background-color: orange;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+

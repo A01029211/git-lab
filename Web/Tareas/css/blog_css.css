@@ -1,0 +1,72 @@
+body {
+    background-color: black;
+    color: gray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+body h1 {
+    font-style: oblique;
+    color: green;
+    margin: 50px;
+    text-align: center;
+    
+}
+
+body h3 {
+    color: gray;
+    font-size: 30px ;
+
+}
+
+#textoInicial {
+    border: white 3px solid;
+    color: gray;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+#tablaInicio {
+    text-align: left;
+}
+
+#agujeroNegro {
+    text-align: center;    
+}
+
+#temasGit {
+    color: gray;
+    border-top: white 5px dotted;
+    
+}
+
+#ListaTemas {
+    list-style: lower-greek;
+}
+
+#urlMainPage {
+    border-bottom: black 20px solid;
+}
+
+#informacionGit {
+    color: gray;
+}
+
+#TablaComandos {
+    color: gray;
+    padding: 20px;
+}
+
+#ImagenGato {
+    text-align: center;
+}
+
+#sccFinal {
+    border: gray 5px solid;
+    border-radius: 10px;
+    text-align: center;
+    background-image: url(https://i.gifer.com/1pX9.gif);
+    margin: 20px;
+    
+}

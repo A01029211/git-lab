@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/blog_css.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git Hub Blog</title>
 </head>
@@ -9,31 +10,49 @@
     <div>
         <h1>En esta pagina veremos lo que he aprendido sobre github. Veremos repositorios, commits, uso de terminal y mucho mas.</h1>
 
-        <a href="Pagina_bienvenido.html">Link a la pagina de inicio</a>
+        
 
-        <h2>Los temas que veremos en este blog seran los siguientes: </h2>
-        <ul>
-            <li>Que es Git? </li>
-            <li>creacion de repositorios </li>
-            <li>commits </li>
-            <li>Uso de terminal </li>
-            <li>Branching </li>
-        </ul>   
+        <div id="urlMainPage">
+            <a href="Pagina_bienvenido.html">Link a la pagina de inicio</a>
+        </div>
+
+        <img src="https://www.despiertaymira.com/wp-content/uploads/2018/06/etienne_jacob-necesary-disorder09.gif" alt="triangulo gif">
+
+        <div id = temasGit>
+            <h2>Los temas que veremos en este blog seran los siguientes: </h2>
+            <ul id="ListaTemas">
+                <li>Que es Git? </li>
+                <li>creacion de repositorios </li>
+                <li>commits </li>
+                <li>Uso de terminal </li>
+                <li>Branching </li>
+            </ul> 
+        
+        </div>
 
     </div>
 
-    <img src="https://media4.giphy.com/avatars/mwooodward/cIe5MvDvX4Vc.gif" alt="Git hub Gif">
+    
 
+    <div id = informacionGit>
+        <h3>Que es Git?</h3>
 
-    <h3>Que es Git?</h3>
+        <p>Git es un sistema de control de versiones que realiza un seguimiento de los cambios en los archivos. Git es espacificamente util cuando se trabaja en equipo ya que estas haciendo cambios en los mismos archivos al mismo tiempo</p>
 
-    <p></p>
+        <h3>Que es GitHub?</h3>
 
-    <h3>Que es GitHub?</h3>
+        <p>GitHub es una plataforma basada en la nube donde puedes almacenar, compartir y tabajar junto con otros usuarios para escribir un codigo o hacer un proyecto</p>
 
-    <p></p>
+        <h3>Que son los commits?</h3>
 
-    <div>
+        <p>Los commits guardan el estado actual de tus archivos para poder volver a ellso en determinado punto si es que es necesario. Con los comits es facil ver que cambio se hizo para que si hay un error puedes checar en los commits para ver si alguno de ellos pudo haber causado el error.</p>
+
+        <h3>Uso de terminal para interacuar con GitHub</h3>
+
+        <p>Es muy comun utiizar laa termina de git bash para poder hacer cambios o subir cambios. Dentro de esta terminal se pueden hacer muchisimas cosas muy utilies, a continuaacion es dejre una taba con los cmandows que se tienen que poner en la terminal de Git Bash para guardar e progreso de un proyecto. Posteriormente lso mstrare otros comandos que pueden llegar a ser muy utiles.</p>
+    </div>
+
+    <div id="TablaComandos">
         <strong>Comandos en terminal para Git </strong>
 
         <TABLE border>
@@ -47,26 +66,26 @@
                 <TD>git branch -b ""</TD> <TD>con este comando se crea una nueva rama en donde el usuario puede trabajar</TD> 
             </TR>
             <TR>
-                <TD>git pull</TD> <TD>E</TD> 
+                <TD>git pull</TD> <TD>El git pull agarra todos los cambios que se hicieron en un repositorio para asegurar que estaras trabajando con todos los archivos y datos correctos
+                </TD> 
             </TR>
             <TR>
-                <TD>git add</TD> <TD>E</TD> 
+                <TD>git add</TD> <TD>cuando hayas terminado de hacer tus cambios se utiliza el comando git add acompañado del nombre del archivo para agregar el archivo editado a tu repositorio.
+                </TD> 
             </TR>
             <TR>
-                <TD>git commit -m ""</TD> <TD>E</TD> 
+                <TD>git commit -m ""</TD> <TD>Cuando terminas de hacer el git add haces el git commit -m acompañado del mensaje que quieres mandar para identificaar el cambio que hiciste al archivo o repositoro
+                </TD> 
             </TR>
             <TR>
-                <TD>git push -u origin</TD> <TD>E</TD> 
+                <TD>git push -u origin</TD> <TD>Cuando termines tu commit tienes que hacer el git push para que se manden todos los cambios al repositorio y se guarden el la nube
+                </TD> 
             </TR>
             <TR>
-                <TD>git merge</TD> <TD>E</TD> 
+                <TD>git merge</TD> <TD>si estas trabajando en una rama diferente es necesario hacer e git merge para que se incorporen tus cambios a la rama principal
+                </TD> 
             </TR>
         </TABLE>	
-
-git clone, git Branch -b, git pull, git add, git commit -m "", git push -u origin, git merge
-
-git fetch  "funciona para que git te diga los cambios que se hicieron en las diferentes branches"
-
     </div>
 
 
