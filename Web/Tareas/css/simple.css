@@ -2,38 +2,71 @@ header{
     display: flex;
     justify-content: space-between;
     align-content: center;
+    background-color: #25404b;
 }
 
 header nav {
+    color: white;   
     display: flex;
     gap: 10px;
     margin: 18.72px;
+    padding-right: 120px;
+}
+header nav a {
+    color: white;
 }
 
 body {
     text-align: center;
+    color: white;
 }
 
 #SubscibeSection {
     display: flex;
     justify-content: center;
+    margin: 10px,200px,10px,200px;
+    background-color: #25404b;
 }
 
 #SubscibeSection form{
+    color: white;
     margin: 18px;
+    
 }
 
 #imgSection {
     display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    justify-content: space-between;
+    align-content: center;
+    color: black;
+
 }
 
 #titulo {
-    background-color: orange;
+    background-color: #b97d2d;
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     padding-left: 300px;
     padding-right: 300px;
 }
 
+#headerRight {
+    padding-left: 120px;
+}
 
+footer{
+    display: flex;
+    justify-content: center;
+    background-color: #25404b;
+}
+
+#buttonSubsctibe {
+    background-color: #b97d2d;
+}
+
+button {
+    color: white;
+}
