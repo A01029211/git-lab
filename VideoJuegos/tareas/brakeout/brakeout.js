@@ -1,8 +1,8 @@
 /*
- * Implementation of the game of Pong
+ * Implementation of the game breakout
  *
- * Gilberto Echeverria
- * 2025-02-25
+ * Santiago Cordova
+ * 2025-03-11
  */
 
 "use strict";
@@ -84,14 +84,15 @@ class Paddle extends GameObject {
 // const rightLabel = new TextLabel(500, 50, "40px Ubuntu Mono", "white")
 
 // Inicialización del paddle en la parte inferior
-const botompaddle = new Paddle(new Vec((canvasWidth - 100) / 2, canvasHeight - 20), 100, 20, "blue");
-const ball = new Ball(new Vec(canvasWidth / 2 - 20, canvasHeight / 2 - 20), 20, 20, "red");
-const borderTop = new Paddle(new Vec(0 , 0), canvasWidth,10,"black");
-const borderRight = new Paddle(new Vec(canvasWidth - 10 , 0), 10, canvasHeight, "black");
-const borderLeft = new Paddle(new Vec(0, 0), 10, canvasHeight, "black");
-const borderBottom = new Paddle(new Vec(0 , canvasHeight -1 ), canvasWidth, 1,"black");
-const textScore = new TextLabel (35 , 35 , "20px Ubuntu Mono",  "red");
-const textVidas = new TextLabel (canvasWidth - 100, 35 , "20px Ubuntu Mono",  "red");
+const botompaddle = new Paddle(new Vec((canvasWidth - 100) / 2, canvasHeight - 20), 100, 20, "white");
+const ball = new Ball(new Vec(canvasWidth / 2 - 20, canvasHeight / 2 - 20), 20, 20, "white");
+const borderTop = new Paddle(new Vec(0 , 0), canvasWidth,10,"white");
+const borderRight = new Paddle(new Vec(canvasWidth - 10 , 0), 10, canvasHeight, "white");
+const borderLeft = new Paddle(new Vec(0, 0), 10, canvasHeight, "white");
+const borderBottom = new Paddle(new Vec(0 , canvasHeight -1 ), canvasWidth, 1,"white");
+const textScore = new TextLabel (35 , 35 , "20px Ubuntu Mono",  "white");
+const textVidas = new TextLabel (canvasWidth - 100, 35 , "20px Ubuntu Mono",  "white");
+const textGameOver = new TextLabel (canvasWidth/2 -150 , canvasHeight/2 , "50px Ubuntu Mono",  "white");
 
 function main() {
     // Get a reference to the object with id 'canvas' in the page
@@ -116,6 +117,33 @@ class Block extends GameObject {
     }
 }
 
+class PowerUp extends GameObject {
+    constructor(position, width, height, color, effect) {
+        super(position, width, height, color, "powerup");
+        this.effect = effect; 
+        this.active = true;
+    }
+
+    update(deltaTime) {
+        this.position = this.position.plus(new Vec(0, 0.7)); // Movimiento hacia abajo
+    }
+
+    applyEffect(paddle) {
+        if (this.effect === "expand") {
+            // hace mas grande el paddle
+            paddle.width *= 1.5;  
+            
+        } else if (this.effect === "shrink") {
+            // hace mas chico el padlle
+            paddle.width *= 0.5;  
+        }
+        setTimeout(() => {
+            // Restablece tamaño después de 5 segundos
+            paddle.width = 100; 
+        }, 5000);
+    }
+}
+
 const blockRows = 5; 
 const blockCols = 8; 
 const blockWidth = 80; 
@@ -125,13 +153,14 @@ const blockOffsetTop = 50;
 const blockOffsetLeft = 50;
 
 let blocks = [];
+let powerUps = [];
 
 function createBlocks() {
     for (let row = 0; row < blockRows; row++) {
         for (let col = 0; col < blockCols; col++) {
             let x = blockOffsetLeft + col * (blockWidth  + blockPadding );
             let y = blockOffsetTop + row * (blockHeight + blockPadding);
-            blocks.push(new Block(new Vec(10+x, y), blockWidth, blockHeight, "red"));
+            blocks.push(new Block(new Vec(10+x, y), blockWidth, blockHeight, "white"));
         }
     }
 }
@@ -158,6 +187,8 @@ function createEventListeners() {
         }
     });
 }
+
+
 
 function drawScene(newTime) {
     if (oldTime == undefined) {
@@ -187,6 +218,19 @@ function drawScene(newTime) {
         }
     });
 
+    powerUps.forEach((powerUp, index) => {
+        if (powerUp.active) {
+            powerUp.update(deltaTime);
+            powerUp.draw(ctx);
+
+            if (boxOverlap(powerUp, botompaddle)) {
+                powerUp.applyEffect(botompaddle);
+                powerUp.active = false;
+                powerUps.splice(index, 1); // Eliminar power-up tras usarlo
+            }
+        }
+    });
+
     if (boxOverlap(ball, botompaddle) || boxOverlap(ball, borderTop)) {
         ball.velocity.y *= -1;
     }
@@ -197,6 +241,7 @@ function drawScene(newTime) {
         ball.reset();
         vidas--;
         if (vidas == 0){
+            textGameOver.draw(ctx, `GAME OVER`);
             playing = false;
         }
     }
@@ -207,6 +252,11 @@ function drawScene(newTime) {
         ball.velocity.y *= -1; 
         block.active = false; 
         score += 100;
+
+        if (Math.random() < 0.2) {
+            let effect = Math.random() < 0.5 ? "expand" : "shrink"; // 50% expand, 50% shrink
+            powerUps.push(new PowerUp(block.position, 20, 20, "red", effect));
+        }
         // el splice funicona para eliminar un elemento de la lista
         blocks.splice(index, 1); 
     }
