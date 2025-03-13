@@ -13,7 +13,7 @@ const canvasHeight = 600;
 
 let oldTime;
 const paddleVelocity = 1.0;
-const speedIncrease = 1;
+const speedIncrease = 1.1; 
 const initialSpeed = 0.5;
 
 let leftScore = 0;

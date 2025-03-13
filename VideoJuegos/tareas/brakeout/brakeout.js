@@ -15,8 +15,9 @@ let oldTime;
 const paddleVelocity = 1.0;
 const initialSpeed = 0.3;
 
-let leftScore = 0;
-let rightScore = 0;
+let score = 0;
+let vidas = 3;
+let playing = true;
 
 // Context of the Canvas
 let ctx;
@@ -88,7 +89,9 @@ const ball = new Ball(new Vec(canvasWidth / 2 - 20, canvasHeight / 2 - 20), 20, 
 const borderTop = new Paddle(new Vec(0 , 0), canvasWidth,10,"black");
 const borderRight = new Paddle(new Vec(canvasWidth - 10 , 0), 10, canvasHeight, "black");
 const borderLeft = new Paddle(new Vec(0, 0), 10, canvasHeight, "black");
-
+const borderBottom = new Paddle(new Vec(0 , canvasHeight -1 ), canvasWidth, 1,"black");
+const textScore = new TextLabel (35 , 35 , "20px Ubuntu Mono",  "red");
+const textVidas = new TextLabel (canvasWidth - 100, 35 , "20px Ubuntu Mono",  "red");
 
 function main() {
     // Get a reference to the object with id 'canvas' in the page
@@ -100,9 +103,42 @@ function main() {
     ctx = canvas.getContext('2d');
 
     createEventListeners();
-
+    
     drawScene(0);
+
+    createBlocks();
 }
+
+class Block extends GameObject {
+    constructor(position, width, height, color) {
+        super(position, width, height, color, "block");
+        this.active = true; // Indica si el bloque aún está en juego
+    }
+}
+
+const blockRows = 5; 
+const blockCols = 8; 
+const blockWidth = 80; 
+const blockHeight = 30; 
+const blockPadding = 4; 
+const blockOffsetTop = 50; 
+const blockOffsetLeft = 50;
+
+let blocks = [];
+
+function createBlocks() {
+    for (let row = 0; row < blockRows; row++) {
+        for (let col = 0; col < blockCols; col++) {
+            let x = blockOffsetLeft + col * (blockWidth  + blockPadding );
+            let y = blockOffsetTop + row * (blockHeight + blockPadding);
+            blocks.push(new Block(new Vec(10+x, y), blockWidth, blockHeight, "red"));
+        }
+    }
+}
+
+
+
+
 
 function createEventListeners() {
     window.addEventListener('keydown', (event) => {
@@ -136,11 +172,20 @@ function drawScene(newTime) {
     ball.update(deltaTime);
 
     // Draw the paddle
+    textScore.draw(ctx, `Score: ${score}`);
+    textVidas.draw(ctx, `Vidas: ${vidas}`);
     botompaddle.draw(ctx);
     ball.draw(ctx);
     borderTop.draw(ctx);
     borderRight.draw(ctx);
     borderLeft.draw(ctx);
+    borderBottom.draw(ctx);
+
+    blocks.forEach(block => {
+        if (block.active) {
+            block.draw(ctx);
+        }
+    });
 
     if (boxOverlap(ball, botompaddle) || boxOverlap(ball, borderTop)) {
         ball.velocity.y *= -1;
@@ -148,7 +193,28 @@ function drawScene(newTime) {
     if (boxOverlap(ball, borderLeft) || boxOverlap(ball, borderRight)) {
         ball.velocity.x *= -1;
     }
+    if (boxOverlap(ball, borderBottom)){
+        ball.reset();
+        vidas--;
+        if (vidas == 0){
+            playing = false;
+        }
+    }
+
+    // dibuja los bloques
+    blocks.forEach((block, index) => {
+    if (block.active && boxOverlap(ball, block)) {
+        ball.velocity.y *= -1; 
+        block.active = false; 
+        score += 100;
+        // el splice funicona para eliminar un elemento de la lista
+        blocks.splice(index, 1); 
+    }
+});
+
 
     oldTime = newTime;
-    requestAnimationFrame(drawScene);
+    if (playing == true){
+        requestAnimationFrame(drawScene);
+    }
 }
