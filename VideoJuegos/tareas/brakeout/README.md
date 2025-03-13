@@ -4,7 +4,7 @@
 
 Para correr el juego puedes pisarle al link que dejare abajo o puedes meterte al archivo de videojuegos/tareas/breakout/html y ahi le picas al archivo
 
-([https://a01029211.github.io/git-lab/VideoJuegos/tareas/brakeout/brakeout.html])
+https://a01029211.github.io/git-lab/VideoJuegos/tareas/brakeout/brakeout.html
 
 ## ¿Cómo se juega?
 
