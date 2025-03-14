@@ -72,16 +72,6 @@ class Paddle extends GameObject {
 
 }
 
-// An object to represent the box to be displayed
-// const box = new Ball(new Vec(canvasWidth / 2, canvasHeight / 2), 20, 20, "red");
-// const leftPaddle = new Paddle(new Vec(20, canvasHeight / 2), 20, 100, "blue");
-// const rightPaddle = new Paddle(new Vec(canvasWidth - 40, canvasHeight / 2), 20, 100, "blue");
-// const topBar = new GameObject(new Vec(0, 0), canvasWidth, 20, "black", "obstacle");
-// const bottomBar = new GameObject(new Vec(0, canvasHeight - 20), canvasWidth, 20, "black", "obstacle");
-// const leftGoal = new GameObject(new Vec(0, 0), 20, canvasHeight, "green", "leftGoal");
-// const rightGoal = new GameObject(new Vec(canvasWidth -20, 0), 20, canvasHeight, "green", "rightGoal");
-// const leftLabel = new TextLabel(100, 50, "40px Ubuntu Mono", "white")
-// const rightLabel = new TextLabel(500, 50, "40px Ubuntu Mono", "white")
 
 // Inicialización del paddle en la parte inferior
 const botompaddle = new Paddle(new Vec((canvasWidth - 100) / 2, canvasHeight - 20), 100, 20, "white");
@@ -93,6 +83,7 @@ const borderBottom = new Paddle(new Vec(0 , canvasHeight -1 ), canvasWidth, 1,"w
 const textScore = new TextLabel (35 , 35 , "20px Ubuntu Mono",  "white");
 const textVidas = new TextLabel (canvasWidth - 100, 35 , "20px Ubuntu Mono",  "white");
 const textGameOver = new TextLabel (canvasWidth/2 -150 , canvasHeight/2 , "50px Ubuntu Mono",  "white");
+const textWinner = new TextLabel (canvasWidth/2 -150 , canvasHeight/2 , "50px Ubuntu Mono",  "white");
 
 function main() {
     // Get a reference to the object with id 'canvas' in the page
@@ -252,6 +243,10 @@ function drawScene(newTime) {
         ball.velocity.y *= -1; 
         block.active = false; 
         score += 100;
+        if (score === 4000){
+            textWinner.draw(ctx, ` GANASTE`);
+            playing = false;
+        }
 
         if (Math.random() < 0.2) {
             let effect = Math.random() < 0.5 ? "expand" : "shrink"; // 50% expand, 50% shrink
