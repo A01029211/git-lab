@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/eventos_dom.css">
+    
+    <title>Eventos y Dom</title>
+</head>
+
+<body>
+    <h1>Eventos y DOM y ChatGPT</h1>
+
+    <div class="container">
+        <h2>Instrucciones</h2>
+        <p>Utiliza ChatGPT y github Copilot para resolver la siguiente actividad. Antes de hacer los ejercicios, contesta las siguientes preguntas. Pregúntale a ChatGPT las preguntas, y verifica que lo que haya generado es correcto. Cuando sea necesario, agrega un ejemplo de código. Incluye una fuente que valide o invalide lo que generó. Agrega elementos de HTML con tus respuestas. (<b>Protip</b>: usa ChatGPT para que las respuestas las ponga directamente en elementos de html.)</p>
+
+        <p>Terminando las preguntas y los ejercicios, documenta tu experiencia con las herramientas en la sección de conclusiones. </p>
+    </div>
+
+    <div class="container">
+        <h3>Preguntas</h3>
+        <ol>
+            <li>¿Qué es el DOM?</li>
+            <p>El DOM (Document Object Model) es una estructura de árbol que representa todos los elementos, etiquetas y contenido de una página web, permitiendo que los lenguajes de programación (como JavaScript) puedan acceder, modificar y manipular esos elementos de forma dinámica.</p>
+            <p><a href="https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction"> Referencia</a></p>
+            <li>¿Qué es un nodo?</li>
+            <p>Un nodo en el contexto del DOM es cada una de las piezas que forman la estructura del documento.
+                Básicamente, todo lo que está en el HTML es un nodo: etiquetas, texto, atributos, comentarios, etc.</p>
+            <p><a href="https://keepcoding.io/blog/que-es-un-nodo-en-el-dom/"> Referencia</a></p>
+            <li>¿Cómo se accede a un elemento del DOM?</li>
+            <p>Se accede utilizando métodos como <code>getElementById</code>, <code>getElementsByClassName</code>, <code>getElementsByTagName</code> o <code>querySelector</code>, entre otros. Por ejemplo: <code>document.getElementById("miElemento")</code>.</p>
+            <p><a href="https://es.khanacademy.org/computing/computer-programming/html-css-js/html-js-dom-access/a/summary-dom-access-methods"> Referencia</a></p>
+            
+            <li>¿Cómo se modifica un elemento del DOM?</li>
+            <p>Se puede modificar usando sus propiedades, como <code>textContent</code>, <code>innerHTML</code>, o sus atributos. Por ejemplo: <code>document.getElementById("miElemento").textContent = "Nuevo texto"</code>.</p>
+            <p><a href="https://es.khanacademy.org/computing/computer-programming/html-css-js/html-js-dom-modification/a/summary-dom-modification-techniques"> Referencia</a></p>
+            
+            <li>¿Cuál es la diferencia entre getElementby* y querySelector*?</li>
+            <p><code>getElementBy*</code> busca elementos por ID, clase o etiqueta y devuelve un objeto o lista HTMLCollection. <code>querySelector*</code> usa selectores CSS y devuelve un solo elemento o una NodeList. Ejemplo: <code>document.getElementById("id")</code> vs <code>document.querySelector("#id")</code>.</p>
+            <p><a href="https://codea.app/blog/queryselector-vs-getelementbyId"> Referencia</a></p>
+            
+            <li>¿Qué es un evento?</li>
+            <p>Un evento es cualquier interacción o acción del usuario con la página, como un clic, movimiento de mouse, o escribir en un input.</p>
+            <p><a href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Scripting/Events"> Referencia</a></p>
+            
+            <li>¿Qué es un listener?</li>
+            <p>Es una función que "escucha" un evento y ejecuta un código cuando ese evento ocurre. Por ejemplo: <code>element.addEventListener("click", funcion)</code>.</p>
+            <p><a href="https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener"> Referencia</a></p>
+            
+            <li>¿Qué es un callback?</li>
+            <p>Es una función que se pasa como argumento a otra función y se ejecuta después de que ocurra un evento o una acción específica.</p>
+            <p><a href="https://developer.mozilla.org/es/docs/Glossary/Callback_function"> Referencia</a></p>
+            
+            <li>¿Qué es un objeto de evento?</li>
+            <p>Es un objeto que contiene información sobre el evento que ocurrió, como el tipo de evento, el elemento objetivo y las coordenadas del mouse, entre otros.</p>
+            <p><a href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Scripting/Events"> Referencia</a></p>
+                
+        </ol>        
+    </div>
+
+    <h3>Ejercicios de código</h3>
+    <p>Usa ChatGPT y copilot para resolver los ejercicios. Por cada ejercicio, pídele a ChatGPT o a copilot que te genere los comentarios. Verifica los resultados antes de subirlos a tu repo.</p>
+
+    <div class="container">
+        <p>1. Modifica el siguiente elemento para mostrar la posición del mouse en el documento:</p>
+        <p id="mousePosition">Posición del mouse: </p>
+    </div>
+
+    <div class="container">
+        <p>2. Al dar click al siguiente botón, obtén el nombre y apellido de las siguientes cajas de texto, y agrega, después del botón, un elemento que tenga el nombre completo.</p>
+        <form id="form1">
+            First name: <input id="form-fname" type="text" name="fname" ><br>
+            Last name: <input id="form-lname" type="text" name="lname" ><br><br>
+        <input id="form1-submit" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="container">
+        <p>3. Agrega el código para agregar una fila, o una columna, a la siguiente tabla al dar click al botón correspondiente.</p>
+        <table id="sampleTable">
+            <tr>
+                <td>Row 1 column 1</td>
+                <td>Row 1 column 2</td>
+            </tr>
+            <tr>
+                <td>Row 2 column 1</td>
+                <td>Row 2 column 2</td>
+            </tr>
+        </table><br>
+        <input id="btn-insert-r" type="button" value="Insert row">
+        <input id="btn-insert-c" type="button" value="Insert column">
+    </div>
+
+    <div class="container">
+        <p>4. Incluye dos cajas de input, para solicitar al usuario la posición de la fila y columna de la siguiente tabla, y otra para solicitar un texto. Al apretar el botón, actualiza el contenido de esa tabla en la posición que solicitaste, con la cadena de texto que solicitaste.</p>
+        <table id="myTable">
+            <tr>
+                <td>Row1 cell1</td>
+                <td>Row1 cell2</td>
+                <td>Row1 cell3</td>
+            </tr>
+            <tr>
+                <td>Row2 cell1</td>
+                <td>Row2 cell2</td>
+                <td>Row2 cell3</td>
+            </tr>
+            <tr>
+                <td>Row3 cell1</td>
+                <td>Row3 cell2</td>
+                <td>Row3 cell3</td>
+            </tr>
+            </table><form><br>
+            <input id="rowIndex" type="text" placeholder="Row Index">
+            <input id="colIndex" type="text" placeholder="Col Index">
+            <input id="newValue" type="text" placeholder="New Value">
+            <input id="btn-change" type="button" value="Change content">
+    </div>
+
+    <div class="container">
+        <p>5. Agrega el código para quitar o agregar elementos a la lista de opciones. Los colores pueden ser aleatorios.</p>
+        <form>
+            <select id="colorSelect">
+                <option>Red</option>
+                <option>Green</option>
+                <option>White</option>
+                <option>Black</option>
+            </select>
+            <input id="btn-add-color" type="button" value="Add color">
+            <input id="btn-rmv-color" type="button" value="Remove color">
+        </form>
+    </div>
+
+    
+    <div class="container">
+        <p><strong>6.</strong> Al pasar el mouse por encima de la imagen, cambiar sus dimensiones a valores aleatorios entre 300 y 600:</p>
+        <img id="imagenGato" src="https://loremflickr.com/200/300/cat" alt="Imagen de gato">
+    <div class="container">
+        <h2>Conclusiones</h2>
+
+        <h4>Experiencia general</h4>
+        <p>Yo pense que la tarea iba a ser muy facil pero habian unas cosas que chat no me pudo dar la respuesta a la primera y tuve que volver a preguntar siendo mas especifico.</p>
+        <h4>¿Cuándo y para qué usarías ChatGPT y cuándo Copilot?</h4>
+        <p>Yo usaria inteligencia artifical cuando no puedo encontrar un error en un codigo que yo hice o cuando quiero intentar algo nuevo y chat me puede direccionar o enseñarme algo que no sabia que se podia hacer y ya lo implemento.</p>
+        <h4>Ventajas de usar AI para programar</h4>
+        <p>La inteligencia atrifical sirve muchisimo para programar ya que puede encontrar errores que tu no te percataste o te puede ayudar a optimisar tu codigo de formas que no habias pensado. En general la inteligencia artifical definitivamente es una herramienta que debemos aprender a usar ya que cuando tienes las bases puedes hacer buenas preguntas y de igual forma puedes entender lo que te responde.</p>
+        <h4>Desventajas de usar AI para programar</h4>
+        <p>Pueden haber ocasiones en donde no sepas como funcioana el codigo o la respuesta que te dio la inteligencia artifical y si esta la incorporas en tu codigo luengo no vas a saber como funciona tu codigo y puede causar problemas mas adelante.</p>
+    </div>
+    <script src="../js/eventos_dom.js"></script>
+</body>
+</html>
